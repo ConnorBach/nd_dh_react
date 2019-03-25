@@ -1,23 +1,29 @@
-import React, { Component } from "react";
-import "./App.css";
-import { getTodayFoods } from "./api/apiFunctions";
+import React, { Component } from 'react';
+import './App.css';
+import { getTodayFoods } from './api/apiFunctions';
+import Menus from './Components/Menus';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {};
-    this.testing = this.testing.bind(this);
+    this.setTodayFoods = this.setTodayFoods.bind(this);
   }
 
-  testing() {
-    console.log("testing");
+  componentDidMount() {
+    this.setTodayFoods();
+  }
+
+  async setTodayFoods() {
+    const foods = await getTodayFoods();
+    this.setState({ foods });
   }
 
   render() {
+    const { foods } = this.state;
     return (
       <div className="App">
-        <button onClick={getTodayFoods}>Hit API</button>
-        <button onClick={this.testing}>Testing</button>
+        <Menus foods={foods} />
       </div>
     );
   }
