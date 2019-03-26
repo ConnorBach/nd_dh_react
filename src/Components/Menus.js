@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 import CardContainer from './CardContainer';
+import fuzzySearch from '../utils/fuzzySearching';
 
 class Menus extends Component {
   constructor(props) {
@@ -23,27 +25,33 @@ class Menus extends Component {
   }
 
   render() {
-    const { foods } = this.state;
-    const { menu } = this.state;
+    const { foods, menu } = this.state;
+    const { searchText } = this.props;
     return (
-      <div>
-        {foods
-          ? foods.map(food => (
-            <div>
-                <Button
-                  color="primary"
-                  onClick={() => this.setMenu(food)}
-                  key={food.Name}
-                >
-                  {food.Name}
-                </Button>
-                <br />
-              </div>
-          ))
-          : null}
-        <Button color="primary">Favorites</Button>
-        <CardContainer menu={menu} />
-      </div>
+      <Grid container spacing={16}>
+        <Grid item xs={4}>
+          <div>
+            {foods
+              ? foods.map(food => (
+                <div>
+                    <Button
+                      color="primary"
+                      onClick={() => this.setMenu(food)}
+                      key={food.Name}
+                    >
+                      {food.Name}
+                    </Button>
+                    <br />
+                  </div>
+              ))
+              : null}
+          </div>
+          <Button color="primary">Favorites</Button>
+        </Grid>
+        <Grid item xs={8}>
+          <CardContainer searchText={searchText} menu={menu} />
+        </Grid>
+      </Grid>
     );
   }
 }

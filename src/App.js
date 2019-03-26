@@ -9,6 +9,7 @@ class App extends Component {
     super(props);
     this.state = {};
     this.setTodayFoods = this.setTodayFoods.bind(this);
+    this.setSearchText = this.setSearchText.bind(this);
   }
 
   componentDidMount() {
@@ -20,12 +21,16 @@ class App extends Component {
     this.setState({ foods });
   }
 
+  setSearchText(text) {
+    this.setState({ searchText: text });
+  }
+
   render() {
-    const { foods } = this.state;
+    const { foods, searchText } = this.state;
     return (
       <div className="App">
-        <NavBar />
-        <Menus foods={foods} />
+        <NavBar setSearchText={this.setSearchText} />
+        <Menus searchText={searchText} foods={foods} />
       </div>
     );
   }
