@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { getTodayFoods } from './api/apiFunctions';
 import Menus from './Components/Menus';
+import NavBar from './Components/NavBar';
 
 class App extends Component {
   constructor(props) {
@@ -23,6 +24,7 @@ class App extends Component {
     const { foods } = this.state;
     return (
       <div className="App">
+        <NavBar />
         <Menus foods={foods} />
       </div>
     );

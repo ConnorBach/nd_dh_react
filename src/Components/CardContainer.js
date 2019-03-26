@@ -20,7 +20,7 @@ class CardContainer extends Component {
     const { menu } = this.state;
     const children = [];
     menu.Menu.forEach((food) => {
-      children.push(<FoodCard food={food} />);
+      children.push(<FoodCard key={food.toString()} food={food} />);
     });
     return children;
   }
@@ -32,11 +32,21 @@ class CardContainer extends Component {
 }
 
 CardContainer.propTypes = {
-  menu: PropTypes.shape,
+  menu: PropTypes.shape({
+    Name: PropTypes.string,
+    Start: PropTypes.string,
+    End: PropTypes.string,
+    Menu: PropTypes.array,
+  }),
 };
 
 CardContainer.defaultProps = {
-  menu: { Start: 0, End: 0, Menu: ['Food'] },
+  menu: {
+    Start: '0',
+    End: '0',
+    Menu: ['Food'],
+    Name: 'Meal',
+  },
 };
 
 export { CardContainer as default };

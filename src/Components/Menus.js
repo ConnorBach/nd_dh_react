@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Button from '@material-ui/core/Button';
 import CardContainer from './CardContainer';
 
 class Menus extends Component {
@@ -23,20 +24,25 @@ class Menus extends Component {
 
   render() {
     const { foods } = this.state;
+    const { menu } = this.state;
     return (
       <div>
         {foods
           ? foods.map(food => (
             <div>
-                <button onClick={() => this.setMenu(food)} key={food.Name}>
+                <Button
+                  color="primary"
+                  onClick={() => this.setMenu(food)}
+                  key={food.Name}
+                >
                   {food.Name}
-                </button>
+                </Button>
                 <br />
               </div>
           ))
           : null}
-        <button>Favorites</button>
-        <CardContainer menu={this.state.menu} />
+        <Button color="primary">Favorites</Button>
+        <CardContainer menu={menu} />
       </div>
     );
   }
