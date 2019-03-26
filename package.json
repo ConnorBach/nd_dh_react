@@ -13,6 +13,8 @@
     "react-scripts": "2.1.8"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -25,5 +27,6 @@
     "not op_mini all"
   ],
   "devDependencies": {},
-  "proxy": "https://dh-rest-service.herokuapp.com/"
+  "proxy": "https://dh-rest-service.herokuapp.com/",
+  "homepage": "https://github.com/ConnorBach/nd_dh_react"
 }
