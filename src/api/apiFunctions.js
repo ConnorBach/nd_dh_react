@@ -1,5 +1,4 @@
-const apiURL = 'https://www.dh-rest-service.herokuapp.com';
-const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || apiURL;
+const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT;
 export const getTodayFoods = async () => {
   console.log('hitting api');
   console.log('process.endpoint: ', process.env.REACT_APP_API_ENDPOINT);
