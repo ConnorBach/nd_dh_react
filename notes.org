@@ -1,0 +1,14 @@
+* Current issues
+** TODO api requests break on github pages
+   figure out how to proxy that
+** TODO add ability to login
+   google auth is a must
+** TODO add ability to save favorite foods
+   use database from the API
+** TODO fix navbar width
+   screen scrolls to the right when it shouldn't
+** TODO mobile formatting 
+** TODO update favicon and page title
+
+
+haircut 1pm
