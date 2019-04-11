@@ -1,4 +1,5 @@
 const levenshteinDistance = require('js-levenshtein');
+const fuzzysort = require('fuzzysort');
 
 const fuzzySearch = (searchText, arr, cutoffScore) => {
   let scores = arr.map((s) => {
@@ -14,4 +15,10 @@ const fuzzySearch = (searchText, arr, cutoffScore) => {
 
   return scores.map(score => score.name);
 };
-export { levenshteinDistance, fuzzySearch as default };
+
+const fuzzySearchSort = (searchText, arr) => {
+  const results = fuzzysort.go(searchText, arr);
+  console.log(results);
+  return results.map(item => item.target);
+};
+export { fuzzySearchSort, levenshteinDistance, fuzzySearch as default };

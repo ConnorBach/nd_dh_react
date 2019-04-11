@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import FoodCard from './FoodCard';
-import fuzzySearch from '../utils/fuzzySearching';
+import { fuzzySearchSort } from '../utils/fuzzySearching';
 
 class CardContainer extends Component {
   constructor(props) {
@@ -22,7 +22,7 @@ class CardContainer extends Component {
     const { searchText } = this.props;
     let renderMenu = menu.Menu.slice();
     if (searchText !== '') {
-      renderMenu = fuzzySearch(searchText, renderMenu, 12);
+      renderMenu = fuzzySearchSort(searchText, renderMenu, 12);
       console.log('renderMenu', renderMenu);
     }
     const children = [];

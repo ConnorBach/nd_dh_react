@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import CardContainer from './CardContainer';
-import fuzzySearch from '../utils/fuzzySearching';
 
 class Menus extends Component {
   constructor(props) {
@@ -32,19 +32,23 @@ class Menus extends Component {
         <Grid item xs={4}>
           <div>
             {foods
-              ? foods.map(food => (
+              ? (foods.map(food => (
                 <div>
-                    <Button
-                      color="primary"
-                      onClick={() => this.setMenu(food)}
-                      key={food.Name}
-                    >
-                      {food.Name}
-                    </Button>
-                    <br />
-                  </div>
+                  <Button
+                    color="primary"
+                    onClick={() => this.setMenu(food)}
+                    key={food.Name}
+                  >
+                    {food.Name}
+                  </Button>
+                  <br />
+                </div>
               ))
-              : null}
+              )
+              :               <div>
+                <CircularProgress />
+<div>Loading Foods</div>
+              </div>}
           </div>
           <Button color="primary">Favorites</Button>
         </Grid>
