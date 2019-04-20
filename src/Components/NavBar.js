@@ -9,6 +9,7 @@ import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
+import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
   root: {
@@ -82,7 +83,9 @@ class SearchAppBar extends Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const {
+      login, logout, isAuthenticated, classes,
+    } = this.props;
     return (
       <div className={classes.root}>
         <AppBar position="static">
@@ -115,6 +118,13 @@ class SearchAppBar extends Component {
                   input: classes.inputInput,
                 }}
               />
+            </div>
+            <div>
+              {isAuthenticated
+                ? isAuthenticated()
+                  ? (<Button onClick={() => logout()}>Log Out</Button>)
+                  : (<Button onClick={() => login()}>Log In</Button>)
+                : null}
             </div>
           </Toolbar>
         </AppBar>
