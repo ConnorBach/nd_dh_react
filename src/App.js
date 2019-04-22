@@ -18,8 +18,11 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const auth = new Auth();
-    this.setState({ auth });
+    const { auth } = this.props;
+    // renew session if time is expired
+    if (localStorage.getItem('isLoggedIn') === true) {
+      auth();
+    }
     this.setTodayFoods();
   }
 
@@ -33,28 +36,28 @@ class App extends Component {
   }
 
   login() {
-    const { auth } = this.state;
+    const { auth } = this.props;
     auth.login();
   }
 
   logout() {
-    const { auth } = this.state;
+    const { auth } = this.props;
     auth.logout();
   }
 
   render() {
-    const { auth, foods, searchText } = this.state;
+    const { foods, searchText } = this.state;
+    const { auth } = this.props;
 
     let isAuthenticated = null;
-    if (this.state.auth) {
-      isAuthenticated = this.state.auth.isAuthenticated;
+    if (auth) {
+      isAuthenticated = auth.isAuthenticated;
     }
 
     return (
       <div className="App">
         <NavBar login={this.login} logout={this.logout} isAuthenticated={isAuthenticated} setSearchText={this.setSearchText} />
         <Menus searchText={searchText} foods={foods} />
-        <Route path="/callback" component={Callback} />
       </div>
     );
   }

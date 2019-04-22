@@ -1,5 +1,5 @@
 import auth0 from 'auth0-js';
-//import history from '../history';
+import history from '../history';
 
 export default class Auth {
     accessToken;
@@ -60,7 +60,7 @@ export default class Auth {
     this.expiresAt = expiresAt;
 
     // navigate to the home route
-    //history.replace('/home');
+    history.replace('/');
   }
 
   renewSession() {

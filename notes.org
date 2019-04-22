@@ -1,13 +1,87 @@
 * Current issues
+** DONE add ability to login
+   google auth is a must
+	 using auth0
+	 callback to /callback and then redirect to main page /
+** DONE Check to renew login session
+	 using localStorage
+** TODO add ability to save favorite foods
+*** TODO update Flask app with database
+		think about using elixir for the API, could be fun
+
+		need to figure out how auth0 works for individual users ->
+		independent token?
+
+		auth0 gives unique user_id, can use this
+		[https://auth0.com/docs/users/normalized/auth0/identify-users](auth0
+		unique users)
+		
+		already have one db table of all foods, need to add a second table
+		of users and favorite foods
+		
+		db table will probably look something like this:
+		
+		| User_ID | Food       |
+		|---------+------------|
+		|     123 | Applesauce |
+		|     123 | Yogurt     |
+		|     124 | Applesauce |
+
+		store user foods
+		
+		need to think about storing ALL foods so allow for users to
+		select only favorites that actually exist
+
+		either that or just search the list of foods for matches but that
+		seems like it might get slow and also inaccurate and probably
+		confusing
+		
+		Don't want to have the user be responsible for making sure their
+		foods comply with the DH format.
+
+		Depends on what is more frustrating i guess: only being able to
+		choose foods that the app has seen as a favorite or not finding
+		the correct food when it is actually in the dining hall.
+		
+**** TODO add API request from front end to save the foods
+		
+		need to evaluate this
+
+
+*** TODO add ability to enter and save favorite foods
+		need new component
+		send API post request to the Flask App
+		
+		need to think about how this should work
+		problem is that the food they type might not exactly match the
+		foods in the dh menu
+		
+		can save whatever you want, then need to "search" to see a list of
+		foods that might be in the dh that day that you like
+		
+		need a list and textbox
+		save button, search button
+		tabbed interface, favorites, results
+		
+		need to save to higher level component, don't keep in favorites
+		component because then the list will reset everytime
+		
+		db already has the ability to give all foods
+		adding a favorite should search this list, that should be loaded
+		on page load, shouldn't be too slow
+		
+		makes favorites really easy to deal with
+
 ** TODO api requests break on github pages
    figure out how to proxy that
-** TODO add ability to login
-   google auth is a must
-** TODO add ability to save favorite foods
-   use database from the API
+	 pretty strange issue not seeing a lot of help online
+	 need more research into this
 ** TODO fix navbar width
    screen scrolls to the right when it shouldn't
-** TODO mobile formatting 
-** TODO update favicon and page title
-
-
+	 looks like i need to add border-right-10px or so
+** DONE mobile formatting 
+	 looks pretty good rn tbh
+	 maybe just add more padding in the future if we really need it
+** DONE update favicon and page title
+** TODO fix security problems with dependencies
+	 update to newest versions of at risk packages

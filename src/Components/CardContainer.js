@@ -11,14 +11,11 @@ class CardContainer extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props !== nextProps) {
-      const { menu } = nextProps;
-      this.setState({ menu });
-    }
+    const { menu } = nextProps;
+    this.setState({ menu });
   }
 
-  buildMenu() {
-    const { menu } = this.state;
+  buildMenu(menu) {
     const { searchText } = this.props;
     let renderMenu = menu.Menu.slice();
     if (searchText !== '') {
@@ -33,8 +30,8 @@ class CardContainer extends Component {
   }
 
   render() {
-    const { menu } = this.state;
-    return <div>{menu ? this.buildMenu() : null}</div>;
+    const { menu } = this.props;
+    return <div>{menu ? this.buildMenu(menu) : null}</div>;
   }
 }
 
